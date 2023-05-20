@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLED-FAP</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- <div id="div_logo" class="bg_lightblue">
+        <h1>WLED-FAP</h1>
+    </div> -->
+    <div id="div_topmenubar" class="bg_lightblue">
+        <div class="divinmenuhor">
+            <h2>Frames/sec</h2>
+            <input type="number" id="fps" class="background_input" value="5" max="60" min="1">
+        </div>
+        <div class="divinmenuhor">
+            <h2>Seconds</h2>
+            <input type="number" id="seconds" class="background_input" value="5" min="1" >
+        </div>
+        <div class="divinmenuhor">
+            <h2>IP</h2>
+            <input type="text" id="ip" class="background_input">
+        </div>
+        <div class="divinmenuhor">
+            <h2>Port</h2>
+            <input type="number" id="port" class="background_input" value="21324">
+        </div>
+        <div class="divinmenuhor">
+            <img src="./img/download.png" id="download" class="background_input img">
+        </div>
+        <div class="divinmenuhor">
+            <!-- <img src="./img/upload.png" id="uploadimg" class="background_input img"> -->
+            <input type="file" id="upload" class="background_input" accept=".json">
+        </div>
+        <div class="divinmenuhor">
+            <img src="./img/play.png" id="playpause" class="background_input img">
+        </div>
+    </div>
+    <div id="div_size" class="bg_lightblue">
+        <div class="divinmenuvert">
+            <h2>Height</h2>
+            <input type="number" id="height" value="5" min="1" class="background_input">
+        </div>
+        <div class="divinmenuvert">
+            <h2>Width</h2>
+            <input type="number" id="width" value="15" min="1" class="background_input">
+        </div>  
+    </div>
+    <div id="div_locset">
+        <div id="div_pixelset">
+            <div class="bg_lightblue divsetdivinput">
+                <div class="divseth2input">
+                    <h2>Pixel Color</h2>
+                    <input type="color" id="pixelcolor" class="background_input">
+                </div>
+                <img src="./img/check.png" class="submitdark img background_input" id="SavePixelColor">
+            </div>
+            <div class="bg_lightblue divsetdivinput">
+                <div class="divseth2input">
+                    <h2>Pixel Number</h2>
+                    <input type="number" id="pixelnumber" class="background_input">
+                </div>
+                <img src="./img/check.png" class="submitdark img background_input" id="SavePixelNumber">
+            </div>
+        </div>
+        <h2 id="SaveFrame" class="bg_lightblue">Save Frame [NaN]</h2>
+    </div>
+    <div id="div_LEDs">
+        <input type="checkbox" id="checkbox_0" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_1" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_2" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_3" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_4" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_5" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_6" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_7" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_8" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_9" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_10" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_11" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_12" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_13" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_14" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_15" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_16" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_17" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_18" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_19" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_20" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_21" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_22" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_23" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_24" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_25" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_26" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_27" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_28" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_29" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_30" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_31" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_32" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_33" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_34" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_35" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_36" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_37" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_38" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_39" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_40" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_41" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_42" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_43" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_44" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_45" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_46" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_47" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_48" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_49" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_50" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_51" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_52" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_53" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_54" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_55" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_56" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_57" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_58" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_59" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_60" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_61" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_62" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_63" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_64" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_65" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_66" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_67" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_68" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_69" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_70" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_71" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_72" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_73" class="LED_Checkbox">
+        <input type="checkbox" id="checkbox_74" class="LED_Checkbox">
+    </div>
+    <div id="div_tm">
+        <div id="tmLineSeperation"></div>
+        <div id="div_tmLines">
+            <div class="tmLineVert" id="Frame_0"></div>
+            <div class="tmLineVert" id="Frame_1"></div>
+            <div class="tmLineVert" id="Frame_2"></div>
+            <div class="tmLineVert" id="Frame_3"></div>
+            <div class="tmLineVert" id="Frame_4"></div>
+            <div class="tmLineVert" id="Frame_5"></div>
+            <div class="tmLineVert" id="Frame_6"></div>
+            <div class="tmLineVert" id="Frame_7"></div>
+            <div class="tmLineVert" id="Frame_8"></div>
+            <div class="tmLineVert" id="Frame_9"></div>
+            <div class="tmLineVert" id="Frame_10"></div>
+            <div class="tmLineVert" id="Frame_11"></div>
+            <div class="tmLineVert" id="Frame_12"></div>
+            <div class="tmLineVert" id="Frame_13"></div>
+            <div class="tmLineVert" id="Frame_14"></div>
+            <div class="tmLineVert" id="Frame_15"></div>
+            <div class="tmLineVert" id="Frame_16"></div>
+            <div class="tmLineVert" id="Frame_17"></div>
+            <div class="tmLineVert" id="Frame_18"></div>
+            <div class="tmLineVert" id="Frame_19"></div>
+            <div class="tmLineVert" id="Frame_20"></div>
+            <div class="tmLineVert" id="Frame_21"></div>
+            <div class="tmLineVert" id="Frame_22"></div>
+            <div class="tmLineVert" id="Frame_23"></div>
+            <div class="tmLineVert" id="Frame_24"></div>
+        </div>
+    </div>
+</body>
+<script src="./app.js"></script>
+</html>

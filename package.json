@@ -1,0 +1,15 @@
+{
+  "name": "wled-fap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Roland Daum",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.3.1"
+  }
+}
