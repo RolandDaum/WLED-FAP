@@ -4,12 +4,20 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "win": {
+      "icon": null,
+      "target": "portable"
+    }
   },
   "keywords": [],
   "author": "Roland Daum",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^24.3.1"
+    "electron": "^24.3.1",
+    "electron-builder": "^23.6.0"
   }
 }
