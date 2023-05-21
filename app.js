@@ -135,8 +135,8 @@ function RefreshTimeLine() {
   refreshFrameSelector()
 }
 function loadFrameLEDCheckboxes() {
+  CheckboxXLedNum = {}
   if (('Frame' + currentframe) in Animation) {
-    CheckboxXLedNum = {}
     for (i = 0; i < document.getElementsByClassName('LED_Checkbox').length; i++) {
       document.getElementsByClassName('LED_Checkbox')[i].style.backgroundColor = ''
     }
@@ -220,20 +220,29 @@ async function PlayAnimantion() {
     for (i = 0; i < (Object.keys(Animation).length - 1); i++) {
       let NonbyteAnimation = [wledprotocol, wledtimeout];
       for (u = 0; u < Object.keys(Animation['Frame' + i]).length; u++) {
-        NonbyteAnimation.push(Animation['Frame' + i]['Checkbox' + u][0], Animation['Frame' + i]['Checkbox' + u][1], Animation['Frame' + i]['Checkbox' + u][2], Animation['Frame' + i]['Checkbox' + u][3])
-        console.log('New Bytearray' + NonbyteAnimation)
+        NonbyteAnimation.push(
+          Animation['Frame' + i]['Checkbox' + parseInt((Object.keys(Animation['Frame' + i])[u]).match(/\d+/)[0])][0],
+          Animation['Frame' + i]['Checkbox' + parseInt((Object.keys(Animation['Frame' + i])[u]).match(/\d+/)[0])][1],
+          Animation['Frame' + i]['Checkbox' + parseInt((Object.keys(Animation['Frame' + i])[u]).match(/\d+/)[0])][2],
+          Animation['Frame' + i]['Checkbox' + parseInt((Object.keys(Animation['Frame' + i])[u]).match(/\d+/)[0])][3]
+        )
+        console.log('New Bytearray ' + NonbyteAnimation)
+
       }
       console.log(NonbyteAnimation)
       byteAnimation = new Uint8Array(NonbyteAnimation)
       socket.send(byteAnimation, 0, byteAnimation.length, document.getElementById('port').value, document.getElementById('ip').value, (err) => {
-        if (err) {
-          console.error('Fehler beim Senden:', err);
-        } else {
-          console.log('ByteArray erfolgreich gesendet.');
-        }
-        // socket.close();
+      if (err) {
+        console.error('Fehler beim Senden:', err);
+      } else {
+        console.log('ByteArray erfolgreich gesendet.');
+      }
       });
       await wait(((60/document.getElementById('fps').value)*1000))
+      if (!isplaying) {
+        socket.close()
+        break
+      }
     }
 }
 
