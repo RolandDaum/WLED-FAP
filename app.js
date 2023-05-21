@@ -42,12 +42,9 @@ document.getElementById('SaveFrame').addEventListener('click', (event) => {
   Animation['Frame' + currentframe] = {}
   for (i = 0; i < Object.keys(CheckboxXLedNum).length; i++) {
     Animation['Frame' + currentframe]['Checkbox' + Object.keys(CheckboxXLedNum)[i]] = 
-    [
-      CheckboxXLedNum[Object.keys(CheckboxXLedNum)[i]],
-      document.getElementById('checkbox_' + i).style.backgroundColor.match(/\d+/g)
-    ].flat()
+    [CheckboxXLedNum[Object.keys(CheckboxXLedNum)[i]], document.getElementById('checkbox_' + Object.keys(CheckboxXLedNum)[i]).style.backgroundColor.match(/\d+/g)].flat()
   }
-  }
+  },
 )
 
 //change Checkbox BG
@@ -97,7 +94,10 @@ document.querySelectorAll('.LED_Checkbox').forEach((element) => {
     //Setting LED Number in input field
     if (('Checkbox' + currentLEDCheckbox) in Animation['Frame' + currentframe]) {
       document.getElementById('pixelnumber').value = Animation['Frame' + currentframe]['Checkbox' + currentLEDCheckbox][0]
-    } 
+    }
+    else {
+      document.getElementById('pixelnumber').value = ''
+    }
   });
 });
 }
@@ -116,6 +116,7 @@ function refreshFrameSelector() {
       document.getElementById(event.target.id).style.transform = 'scale(1.1)'
       document.getElementById(event.target.id).style.backgroundColor = 'var(--white)'
       currentframe = Array.from(document.querySelectorAll('.tmLineVert')).indexOf(element);
+      document.getElementById('SaveFrame').innerText = 'Save current Frame [' + currentframe + ']'
       loadFrameLEDCheckboxes()
     })
   })
@@ -136,11 +137,13 @@ function RefreshTimeLine() {
 function loadFrameLEDCheckboxes() {
   if (('Frame' + currentframe) in Animation) {
     CheckboxXLedNum = {}
-    for (i = 0; i < Object.keys(Animation['Frame' + currentframe]).length; i++) {
-      document.getElementById('checkbox_' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])).style.backgroundColor = 'rgb(' + Animation['Frame' + currentframe]['Checkbox' + i][1] + ', ' + Animation['Frame' + currentframe]['Checkbox' + i][2] + ', ' + Animation['Frame' + currentframe]['Checkbox' + i][3];
-      CheckboxXLedNum[parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/g))] = Animation['Frame' + currentframe]['Checkbox' + i][0];
+    for (i = 0; i < document.getElementsByClassName('LED_Checkbox').length; i++) {
+      document.getElementsByClassName('LED_Checkbox')[i].style.backgroundColor = ''
     }
-    console.log(CheckboxXLedNum);
+    for (i = 0; i < Object.keys(Animation['Frame' + currentframe]).length; i++) {
+      document.getElementById('checkbox_' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])).style.backgroundColor = 'rgb(' + Animation['Frame' + currentframe]['Checkbox' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])][1] + ', ' + Animation['Frame' + currentframe]['Checkbox' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])][2] + ', ' + Animation['Frame' + currentframe]['Checkbox' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])][3];
+      CheckboxXLedNum[parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/g))] = Animation['Frame' + currentframe]['Checkbox' + parseInt((Object.keys(Animation['Frame' + currentframe])[i]).match(/\d+/)[0])][0];
+    }
   }
   else {
     for (i = 0; i < document.getElementsByClassName('LED_Checkbox').length; i++) {
@@ -230,7 +233,7 @@ async function PlayAnimantion() {
         }
         // socket.close();
       });
-      await wait(((60/document.getElementById('seconds').value)*1000)/2)
+      await wait(((60/document.getElementById('fps').value)*1000))
     }
 }
 
