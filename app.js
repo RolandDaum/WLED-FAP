@@ -238,7 +238,7 @@ async function PlayAnimantion() {
         console.log('ByteArray erfolgreich gesendet.');
       }
       });
-      await wait(((60/document.getElementById('fps').value)*1000))
+      await wait(((1/document.getElementById('fps').value)*1000))
       if (!isplaying) {
         socket.close()
         break
