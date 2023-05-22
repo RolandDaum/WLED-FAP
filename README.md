@@ -35,8 +35,53 @@ The Framerate times the animation Duration is the amount of single Frames you ge
   - *Not necessary/needed when choosing the color*
 - Once you finished setting each LED after your preferences click on '**_Save Frame [NaN]_**'
 - When saved one frame just click on the next one in the time line and start assigning Checkboxes to the LED numbers and color
+### Side note
+Not every Checkbox has to be assigned to an LED. There more or less just making up a canvas on which you can place the LED's just as they are in real life. For example a circle, house or what ever you want. You should also be able to make 2d matrix animations if you want to, but I think there might be a better software out there for this.
 
-## Save Animations
-- 
+## Save/Load Animations
+### Save
+- Click on the download icon to save/download your animation (*defaul file name 'animation.json'*)
+### Load
+- Click on Chose File right next to the save/download button to load your saved animation
+### animation.json
+The animation are saved as a json file which stores all the necessary data of your anmation
 
-*!!! The entire electron 'node_module' folder is not included in the source file due to large file sizes [.gitnore](https://github.com/RolandDaum/WLED-FAP/blob/master/.gitignore) !!!*
+**Example '*animation.json*'**
+```
+{
+"metadata":
+   {"fps":"2",
+   "sec":"1",
+   "ip":"10.10.10.8",
+   "port":"21324",
+   "height":"3",
+   "width":"8"},
+"Frame0":
+   {"Checkbox9":["10","255","0","0"],
+   "Checkbox11":["12","0","0","255"],
+   "Checkbox13":["14","255","0","0"]},
+"Frame1":
+   {"Checkbox9":["10","0","0","255"],
+   "Checkbox11":["12","255","0","0"],
+   "Checkbox13":["14","0","0","255"]},
+}
+```
+- '*metadata*' contains all the animation settings
+- Each Frame contains every '*Checkbox[n]*' that has been assigned to an LED Number in that frame
+- A '*Checkbox[n]*' contains 4 values
+0. LED Number
+1. Red color Value
+2. Green color Value
+3. Blue color Value
+- These for values are later send to WLED
+  - For more Informations check the WLED wiki [UDP-Realtime-Control](https://github.com/Aircoookie/WLED/wiki/UDP-Realtime-Control)
+  - I also have a [python example](https://github.com/RolandDaum/WLED-UDP-Realtime-Controll-Python-JavaScript/blob/master/WLEDUDP.py) on how to send data via UDP Connection to WLED. As for JS you need node.js to getting this done. If you want to see how, check the code for playing the animation in [app.js]([https://github.com/RolandDaum/WLED-FAP/blob/master/app.js#198](https://github.com/RolandDaum/WLED-FAP/blob/ed2616db4c4da2610cee7087b9aecbaa5126aaf9/app.js#L198))
+- If you want you could write the *animation.json* file directly and then loading it into WLED-FAP. WLED-FAP is basicly just and animation creating programm for WLED which can send the animations as well
+ 
+## Playing Animations
+To play your animations simply click on the play button in the top right corner, aswell if you want to stop the animation
+- make sure you entered the connection data correctly
+- You might have to click on the star icon in the top left corner in the WLED GUI to enable WLED to receiving live UDP data
+
+# Important notes
+- *!!! The entire electron 'node_module' folder is not included in the source file due to large file sizes [.gitnore](https://github.com/RolandDaum/WLED-FAP/blob/master/.gitignore) !!!*
