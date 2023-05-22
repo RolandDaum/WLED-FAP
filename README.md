@@ -5,6 +5,8 @@
 
 WLED-FAP is a basic an easy to use **F**rame **A**nimation **P**rogramm made with JS and build in [electron](https://github.com/electron/).
 
+### ![WLED-FAP UI](img/WLED-FAPUI.png)
+
 # Tutorial - [YouTube Tutorial](https://youtu.be/ivSfaMmUXWA)
 ## Installation/Setup
 - Download the latest release version of [WLED-FAP](https://github.com/RolandDaum/WLED-FAP/releases)
