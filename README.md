@@ -3,7 +3,7 @@
 ## Introduction
 ### WLED-FAP - Frame Animation Program for WLED
 
-WLED-FAP is a basic an easy to use **F**rame **A**nimation **P**rogramm made with JS and build in [electron](https://github.com/electron/).
+WLED-FAP is a basic an easy to use **F**rame **A**nimation **P**rogramm made with JS and build in [electron](https://github.com/electron/). With WLED-FAP you can programm and keyframe animate anything you want for your WLED device. It's still the first version of it, and if there are many requests for more features, I will completely remake, rework, and redesign this because I know myself that this is just functionally right now.
 
 ### ![WLED-FAP UI](img/WLED-FAPUI.png)
 
