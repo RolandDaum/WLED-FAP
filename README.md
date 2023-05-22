@@ -77,7 +77,7 @@ The animation are saved as a json file which stores all the necessary data of yo
 3. Blue color Value
 - These for values are later send to WLED
   - For more Informations check the WLED wiki [UDP-Realtime-Control](https://github.com/Aircoookie/WLED/wiki/UDP-Realtime-Control)
-  - I also have a [python example](https://github.com/RolandDaum/WLED-UDP-Realtime-Controll-Python-JavaScript/blob/master/WLEDUDP.py) on how to send data via UDP Connection to WLED. As for JS you need node.js to getting this done. If you want to see how, check the code for playing the animation in [app.js]([https://github.com/RolandDaum/WLED-FAP/blob/master/app.js#198](https://github.com/RolandDaum/WLED-FAP/blob/ed2616db4c4da2610cee7087b9aecbaa5126aaf9/app.js#L198))
+  - I also have a [python example](https://github.com/RolandDaum/WLED-UDP-Realtime-Controll-Python-JavaScript/blob/master/WLEDUDP.py) on how to send data via UDP Connection to WLED. As for JS you need node.js to getting this done. If you want to see how, check the code for playing the animation in [app.js](https://github.com/RolandDaum/WLED-FAP/blob/master/app.js#198)
 - If you want you could write the *animation.json* file directly and then loading it into WLED-FAP. WLED-FAP is basicly just and animation creating programm for WLED which can send the animations as well
  
 ## Playing Animations
