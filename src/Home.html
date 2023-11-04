@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WLED-FAP | Home</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+    <link href="./dist/output.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!--Custome CSS Style-->
+<style>
+    /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #f3f3f7 transparent;
+}
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #f3f3f7;
+  border-radius: 3px;
+}
+
+#gridcontainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: start;
+}
+</style>
+
+<body class="bg-bg-default font-MPlus1Code text-text-default h-screen w-screen overflow-hidden">
+    <nav class="flex justify-center items-center w-full bg-secondary-default select-none fixed top-0">
+        <div style="-webkit-app-region: drag" class="flex-grow">
+            <h1 class="mx-5 text-sm font-[500]">WLED-FAP | Home</h1>
+        </div>
+        <div class="flex items-center select-none">
+            <img id="btn_winmin" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-secondary-400" src="./assets/nav_minimize.svg">
+            <img id="btn_winmax" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-secondary-400" src="./assets/nav_reziseMax.svg">
+            <img id="btn_winclose" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-red-500" src="./assets/nav_close.svg">
+        </div>
+    </nav>
+    <main class="w-full box-content">
+        <nav class="flex justify-between items-center w-full px-[25px] py-[10px] bg-bg-default border-b-accent-default border-b-[1px] select-none absolute top-[30px]">
+            <h1 class="text-xl">Animation Name | 26fps - 12s - 312 frames</h1>
+            <div class="flex justify-evenly items-center">
+                <img draggable="false" class="h-[40px] aspect-square mx-[15px] hover:cursor-pointer" src="./assets/play.svg">
+                <img draggable="false" class="h-[30px] aspect-square mx-[15px] hover:cursor-pointer" src="./assets/settings.svg">
+                <img draggable="false" class="h-[30px] aspect-square ml-[15px] hover:cursor-pointer" src="./assets/add.svg">
+            </div>
+        </nav>
+        <div id="gridcontainer" class="w-full h-[calc(100vh-91px)] mt-[91px] py-[20px] px-[40px] overflow-y-scroll ">
+
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-accent-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer border-2 border-secondary-default">
+                <img src="./assets/edit.svg" class="m-2">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-,d">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-primary-default rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+            <div class="w-[400px] aspect-[16/9] bg-red-400 rounded-lg flex flex-col justify-between items-end hover:cursor-pointer">
+                <img src="./assets/edit.svg" class="m-2 opacity-50">
+                <div class="w-full flex justify-start items-center px-5 bg-secondary-default bg-opacity-50 rounded-b-[7.5px]">
+                    <h1 class="text-red">Animation Name</h1>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    const { ipcRenderer } = require('electron')
+
+//  Nav Menu  //
+    // Navbutton minimize
+    document.getElementById('btn_winmin').addEventListener('click', () => {
+        ipcRenderer.send('minimizeWin')
+    })
+    // Navbutton rezise Min/Max
+    document.getElementById('btn_winmax').addEventListener('click', () => {
+        ipcRenderer.send('maximizeWin')
+    })
+    ipcRenderer.on('maximizeWin', (event, isMaximized) => {
+        if (isMaximized) {
+            document.getElementById('btn_winmax').src = './assets/nav_reziseMin.svg'
+        } else {
+            document.getElementById('btn_winmax').src = './assets/nav_reziseMax.svg'
+        }
+    })
+    // Navbutton close
+    document.getElementById('btn_winclose').addEventListener('click', () => {
+        ipcRenderer.send('closeWin')
+    })
+
+</script>
+
+</html>

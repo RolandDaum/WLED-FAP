@@ -1,23 +1,19 @@
 {
   "name": "wled-fap",
-  "version": "1.0.4",
-  "description": "",
-  "main": "main.js",
+  "version": "2.0.0",
+  "description": "Frame animation program for WLED",
+  "main": "./src/main.js",
   "scripts": {
-    "start": "electron .",
-    "build": "electron-builder"
+    "dev-electron": "electron .",
+    "dev-tailwind": "npx tailwindcss -i ./src/input.css -o ./src/dist/output.css --watch"
   },
-  "build": {
-    "win": {
-      "icon": null,
-      "target": "portable"
-    }
-  },
-  "keywords": [],
-  "author": "Roland Daum",
+  "author": "OMG_OT",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^24.3.1",
-    "electron-builder": "^23.6.0"
+    "electron": "^27.0.2",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.12"
   }
 }

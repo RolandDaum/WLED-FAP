@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WLED-FAP | Editor</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+    <link href="./dist/output.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-bg-default font-MPlus1Code text-text-default h-screen w-screen overflow-hidden">
+    <nav class="flex justify-center items-center w-full bg-secondary-default select-none fixed top-0">
+        <div style="-webkit-app-region: drag" class="flex-grow">
+            <h1 class="mx-5 text-sm font-[500]">WLED-FAP | Editor <span>(untitled project)</span></h1>
+        </div>
+        <div class="flex items-center select-none">
+            <img id="btn_winmin" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-secondary-400" src="./assets/nav_minimize.svg">
+            <img id="btn_winmax" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-secondary-400" src="./assets/nav_reziseMax.svg">
+            <img id="btn_winclose" draggable="false" class="h-[30px] aspect-square p-1 hover:bg-red-500" src="./assets/nav_close.svg">
+        </div>
+    </nav>
+    <main class="w-full mt-[30px] box-content select-none">
+        <div class="flex justify-between items-start w-full">
+            <div class="flex flex-col justify-start items-center text-xl mx-5">
+                <div class="w-full">
+                    <h1 class="text-2xl border-b-2 border-primary-default text-center p-2 w-full">LED - Edit</h1>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>LED Num.</h2>
+                        <input type="number" min="1" placeholder="Number" class="input ml-[20px]">
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Color</h2>
+                        <input type="color" class="input ml-[20px]">
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>On/Off</h2>
+                        <label class="relative inline-flex cursor-pointer items-center w-[100px] ml-[20px]">
+                            <input id="switch" type="checkbox" class="peer sr-only" />
+                            <label for="switch" class="hidden"></label>
+                            <div class="peer h-[30px] w-[60px] rounded-[4px] bg-bg-700 after:absolute after:left-[5px] after:top-[5px] after:h-[20px] after:w-[20px] after:rounded-[2px] after:bg-primary-900 after:transition-all after:content-[''] peer-checked:after:translate-x-[30px] peer-checked:after:bg-primary-default"></div>
+                        </label>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <h1 class="text-2xl border-b-2 border-primary-default text-center p-2 w-full">Open/Save</h1>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Load file</h2>
+                        <img class="ml-4 w-[30px] aspect-square hover:cursor-pointer" src="./assets/edit_uploadfile.svg">
+                        <!-- <input type="file" name="" id=""> -->
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <input type="text" placeholder="untitled" class="input">
+                        <div class="flex items-center">
+                            <img class="mr-2 w-[30px] aspect-square hover:cursor-pointer" src="./assets/edit_download.svg">
+                            <img class="ml-2 w-[30px] aspect-square hover:cursor-pointer" src="./assets/edit_save.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <h1 class="text-2xl border-b-2 border-primary-default text-center p-2">Settings</h1>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Device</h2>
+                        <select class="input ml-[20px]">
+                            <option selected disabled>choose</option>
+                            <option disabled>WLED 1</option>
+                            <option disabled>WLED 2</option>
+                            <option disabled>WLED 3</option>
+                            <option disabled>WLED 4</option>
+
+                        </select>
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Protocol</h2>
+                        <select class="input ml-[20px]">
+                            <option selected disabled>choose</option>
+                            <option disabled>WARLS - 255</option>
+                            <option disabled>DRGB - 490</option>
+                            <option disabled>DRGBW - 367</option>
+                            <option disabled>DNRGB - 489/packet</option>
+                            <option disabled>WLED Notifier</option>                        
+                        </select>            
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Height</h2>
+                        <input type="number" placeholder="pixel" class="input ml-[20px]">
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Width</h2>
+                        <input type="number" placeholder="pixel" class="input ml-[20px]">
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Framerate</h2>
+                        <input type="number" placeholder="frames" class="input ml-[20px]">
+                    </div>
+                    <div class="ml-5 my-5 flex items-center justify-between">
+                        <h2>Duration</h2>
+                        <input type="number" placeholder="seconds" class="input ml-[20px]">
+                    </div>
+                </div>
+            </div>
+            <div id="div_checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+                <input type="checkbox" class="checkbox_led">
+            </div>
+        </div>
+
+        <div class="w-[calc(100vw-100px)] flex justify-start items-center flex-row px-5 mb-5 border-t-2 border-primary-default pt-5 overflow-x-scroll absolute bottom-0 left-[50%] translate-x-[-50%]">
+            <div class="mr-5 mb-1">
+                <h1 class="bg-secondary-default text-text-default h-[60px] p-[5px] px-[10px] flex items-end rounded-[5px]">D</h1>
+            </div>
+            <div class=" flex items-center mb-1">
+                <h1 class="timeline_frame">0</h1>
+                <h1 class="timeline_frame">1</h1>
+                <h1 class="timeline_frame">2</h1>
+                <h1 class="timeline_frame">3</h1>
+                <h1 class="timeline_frame">4</h1>
+                <h1 class="timeline_frame">5</h1>
+                <h1 class="timeline_frame">6</h1>
+                <h1 class="timeline_frame">7</h1>
+                <h1 class="timeline_frame">8</h1>
+                <h1 class="timeline_frame">9</h1>
+                <h1 class="timeline_frame">10</h1>
+                <h1 class="timeline_frame">11</h1>
+                <h1 class="timeline_frame">12</h1>
+                <h1 class="timeline_frame">13</h1>
+                <h1 class="timeline_frame">14</h1>
+                <h1 class="timeline_frame">15</h1>
+                <h1 class="timeline_frame">16</h1>
+                <h1 class="timeline_frame">17</h1>
+                <h1 class="timeline_frame">18</h1>
+                <h1 class="timeline_frame">19</h1>
+                <h1 class="timeline_frame">20</h1>
+                <h1 class="timeline_frame">21</h1>
+                <h1 class="timeline_frame">22</h1>
+                <h1 class="timeline_frame">23</h1>
+                <h1 class="timeline_frame">24</h1>
+                <h1 class="timeline_frame">25</h1>
+                <h1 class="timeline_frame">26</h1>
+                <h1 class="timeline_frame">27</h1>
+                <h1 class="timeline_frame">28</h1>
+                <h1 class="timeline_frame">29</h1>
+                <h1 class="timeline_frame">30</h1>
+                <h1 class="timeline_frame">31</h1>
+                <h1 class="timeline_frame">0</h1>
+                <h1 class="timeline_frame">1</h1>
+                <h1 class="timeline_frame">2</h1>
+                <h1 class="timeline_frame">3</h1>
+                <h1 class="timeline_frame">4</h1>
+                <h1 class="timeline_frame">5</h1>
+                <h1 class="timeline_frame">6</h1>
+                <h1 class="timeline_frame">7</h1>
+                <h1 class="timeline_frame">8</h1>
+                <h1 class="timeline_frame">9</h1>
+                <h1 class="timeline_frame">10</h1>
+                <h1 class="timeline_frame">11</h1>
+                <h1 class="timeline_frame">12</h1>
+                <h1 class="timeline_frame">13</h1>
+                <h1 class="timeline_frame">14</h1>
+                <h1 class="timeline_frame">15</h1>
+                <h1 class="timeline_frame">16</h1>
+                <h1 class="timeline_frame">17</h1>
+                <h1 class="timeline_frame">18</h1>
+                <h1 class="timeline_frame">19</h1>
+                <h1 class="timeline_frame">20</h1>
+                <h1 class="timeline_frame">21</h1>
+                <h1 class="timeline_frame">22</h1>
+                <h1 class="timeline_frame">23</h1>
+                <h1 class="timeline_frame">24</h1>
+                <h1 class="timeline_frame">25</h1>
+                <h1 class="timeline_frame">26</h1>
+                <h1 class="timeline_frame">27</h1>
+                <h1 class="timeline_frame">28</h1>
+                <h1 class="timeline_frame">29</h1>
+                <h1 class="timeline_frame">30</h1>
+                <h1 class="timeline_frame">31</h1>
+            </div>
+        </div>
+    </main>
+</body>
+<style>
+
+
+    
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #f3f3f7 transparent;
+}
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #f3f3f7;
+  border-radius: 3px;
+}
+
+
+
+
+    .input {
+        border: none;
+        border-radius: 4px;
+        background-color: #2a2a2c;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        width: 100px;
+        height: 30px;
+    }
+    input::placeholder {
+        /* color: grey; */
+    }
+    .input:focus {
+        outline: none;
+    }
+
+    #div_checkbox_led {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        row-gap: 0;
+        column-gap: 0;
+        grid-template-columns: repeat(51, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        justify-items: center;
+        align-items: center;
+        /* width: fit-content; */
+        overflow-x: scroll;
+        overflow-y: scroll;
+        height: 80vh;
+        width: 100%;
+        background-image: url('./assets/background-transparent_2.png');
+    }
+    .checkbox_led {
+        appearance: none;
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 1/1;
+        height: 50px;
+        min-height: 50px;
+        background-color: red;
+    }
+    .checkbox_led:checked {
+        background-color: green;
+    }
+
+    .timeline_frame {
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        align-items: end;
+        height: 60px;
+        color: #0a0a0f;
+    }
+    .timeline_frame:first-child {
+        border-radius: 5px 0 0 5px;
+    }
+    .timeline_frame:last-child {
+        border-radius: 0 5px 5px 0;
+    }
+    .timeline_frame:nth-child(even) {
+        background-color: #929294;
+    }
+    .timeline_frame:nth-child(odd) {
+        background: #f3f3f7;
+    }
+</style>
+<script>
+
+</script>
+</html>
