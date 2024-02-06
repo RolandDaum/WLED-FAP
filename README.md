@@ -1,5 +1,5 @@
 # WLED-FAP
-
+![Banner](https://repository-images.githubusercontent.com/643328516/3b19f3ff-1b24-4830-a32d-941af51279a6)
 ## Introduction
 ### WLED-FAP - Frame Animation Program for WLED
 
