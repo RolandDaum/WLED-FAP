@@ -1,13 +1,13 @@
 # WLED-FAP
 
-![Project Banner](https://github.com/RolandDaum/WLED-FAP/blob/main/docs/wledfap_banner.png?raw=true)
+![Project Banner](https://github.com/RolandDaum/WLED-FAP/blob/master/docs/wledfap_banner.png?raw=true)
 
 ## Introduction
 ### WLED-FAP - Frame Animation Program for WLED
 
 WLED-FAP is a basic an easy to use **F**rame **A**nimation **P**rogramm made with JS and build in [electron](https://github.com/electron/). With WLED-FAP you can programme and key frame animate anything you want for your WLED device. It's still the first version of it, and if there are many requests for more features, I will completely remake, rework, and redesign this because I know myself that this is just functionally right now.
 
-### ![WLED-FAP UI](img/WLED-FAPUI.png)
+### ![WLED-FAP UI](/img/WLED-FAPUI.png)
 
 # Tutorial - [YouTube Tutorial](https://youtu.be/ivSfaMmUXWA)
 ## Installation/Setup
@@ -51,7 +51,7 @@ Not every Checkbox has to be assigned to an LED. There more or less just making 
 The animation are saved as a json file which stores all the necessary data of your animation
 
 **Example '*animation.json*'**
-'''
+```
 {
 "metadata":
   {"fps":"2",
@@ -69,7 +69,7 @@ The animation are saved as a json file which stores all the necessary data of yo
    "Checkbox11":["12","255","0","0"],
    "Checkbox13":["14","0","0","255"]},
 }
-'''
+```
 - '*metadata*' contains all the animation settings
 - Each Frame contains every '*Checkbox[n]*' that has been assigned to an LED Number in that frame
 - A '*Checkbox[n]*' contains 4 values
