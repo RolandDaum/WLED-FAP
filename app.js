@@ -1,7 +1,5 @@
 const { protocol } = require("electron");
 
-
-
 let Animation = {
   metadata: {
     fps: null,
